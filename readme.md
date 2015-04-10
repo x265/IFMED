@@ -50,42 +50,63 @@ Sending RAW stream over network is not recommended unless you have 10Gbps.
 Server mode is a machine only doing encoding, before client start, server need to run first and awaiting connection.
 
 FFmpeg:
-`user@host~# ifmed -s - | ffmpeg -i - nope.mp4`
+```
+user@host~# ifmed -s - | ffmpeg -i - nope.mp4
+```
 
 FFmpeg (listen specific interface):
-`user@host~# ifmed -s -h 192.168.1.3 - | ffmpeg -i - nope.mp4`
+```
+user@host~# ifmed -s -h 192.168.1.3 - | ffmpeg -i - nope.mp4
+```
 
 FFmpeg (listen specific interface and port):
-`user@host~# ifmed -s -h 192.168.1.3 -p 4001 - | ffmpeg -i - nope.mp4`
+```
+user@host~# ifmed -s -h 192.168.1.3 -p 4001 - | ffmpeg -i - nope.mp4
+```
 
 Or you can do more pipe! FFmpeg to x265!:
-`user@host~# ifmed -s - | ffmpeg -i - -pix_fmt yuv420p -f yuv4mpegpipe - 2> nul | x265 -p ultrafast --crf 25 -t psnr -o nope.hevc --y4m -`
+```
+user@host~# ifmed -s - | ffmpeg -i - -pix_fmt yuv420p -f yuv4mpegpipe - 2> nul | x265 -p ultrafast --crf 25 -t psnr -o nope.hevc --y4m -
+```
 
 or encode specific start time and duration:
-`user@host~# ifmed -s - | ffmpeg -i - -pix_fmt yuv420p -f yuv4mpegpipe -ss 120 -t 240 - 2> /dev/nul | x265 -p ultrafast --crf 25 -t psnr -o nope.hevc --y4m -`
+```
+user@host~# ifmed -s - | ffmpeg -i - -pix_fmt yuv420p -f yuv4mpegpipe -ss 120 -t 240 - 2> /dev/nul | x265 -p ultrafast --crf 25 -t psnr -o nope.hevc --y4m -
+```
 
 #### Client mode
 Client mode is the host that sending video data to encoding server, first you need a server running first, see below.
 
 To send a video (localhost default):
-`user@host~# ifmed -c - < "nope.avi"`
+```
+user@host~# ifmed -c - < "nope.avi"
+```
 
 Send to server:
-`user@host~# ifmed -c -h 192.168.1.3 - < "nope.avi"`
+```
+user@host~# ifmed -c -h 192.168.1.3 - < "nope.avi"
+```
 
 With specific port:
-`user@host~# ifmed -c -h 192.168.1.3 -p 4001 - < "nope.avi"`
+```
+user@host~# ifmed -c -h 192.168.1.3 -p 4001 - < "nope.avi"
+```
 
 Or send RAW (AviSynth) not recommended:
-`user@host~# avs2pipemod video "nope.avs" | ifmed -c -h 192.168.1.3 -p 4001 -`
+```
+user@host~# avs2pipemod video "nope.avs" | ifmed -c -h 192.168.1.3 -p 4001 -
+```
 
 #### FAQ
-Notice: `2> /dev/nul` (linux) or `2> nul` (windows) not to display text,
+Notice: `2> /dev/nul` (linux) or `2> nul` (windows) not to display text.
+
 Notice: `-ss` is FFmpeg command for Start encode at specific second.
+
 Notice: `-t` is FFmpeg command for Total time encode, require `-ss`.
 
 ## License
-All under GNU GPL v2,
+All under GNU GPL v2.
+
 Commercial use is not allowed for the moment.
 
 遥声
