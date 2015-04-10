@@ -87,3 +87,5 @@ Notice: `-t` is FFmpeg command for Total time encode, require `-ss`.
 ## License
 All under GNU GPL v2,
 Commercial use is not allowed for the moment.
+
+遥声
