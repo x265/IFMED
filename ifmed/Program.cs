@@ -197,27 +197,27 @@ namespace ifmed
 
 		static void Help(int code)
 		{
-			Console.Error.WriteLine("Allow you encode video over network, split each start frame and total frame");
-			Console.Error.WriteLine("and start encoding to available workers, in the uniform parallel.");
+			Console.Error.WriteLine("Lets you encode video over network, splits frames for each server");
+			Console.Error.WriteLine("and equally distributes jobs to available workers in parallel.");
 			Console.Error.WriteLine();
 			Console.Error.WriteLine("Usage: ifmed [--help] [-s/-c] [-h ip] [-p port] [< \"nope.avi\"]");
 			Console.Error.WriteLine("       ifmed [--help] [-s/-c] [-h ip] [-p port] [| ffmpeg.exe]");
 			Console.Error.WriteLine();
 			Console.Error.WriteLine("Options:");
 			Console.Error.WriteLine("   --help   Display help");
-			Console.Error.WriteLine("   -s       Run as server mode");
-			Console.Error.WriteLine("   -c       Run as client mode");
+			Console.Error.WriteLine("   -s       Run as server");
+			Console.Error.WriteLine("   -c       Run as client");
 			Console.Error.WriteLine("   -h       IP Address (Default: 127.0.0.1/All interface)");
 			Console.Error.WriteLine("   -p       TCP Port (Range: 1024 - 65535. Default: 4000)");
 			Console.Error.WriteLine("   -        stdin/stdout");
 			Console.Error.WriteLine();
 			Console.Error.WriteLine("Example:");
-			Console.Error.WriteLine("   Client mode, sending stream");
+			Console.Error.WriteLine("   Client mode, distribute stream");
 			Console.Error.WriteLine("   ifmed -c -h 192.168.1.2 - < \"nope.avi\"");
 			Console.Error.WriteLine("   ifmed -c -h 192.168.1.2 -p 4001 - < \"nope.avi\"");
 			Console.Error.WriteLine("   avs2pipe video \"nope.avs\" | ifmed -c -h 192.168.1.2 -");
 			Console.Error.WriteLine();
-			Console.Error.WriteLine("   Server mode, receive stream");
+			Console.Error.WriteLine("   Server mode, encode stream");
 			Console.Error.WriteLine("   ifmed -s - | ffmpeg -i - nope.mp4");
 			Console.Error.WriteLine("   ifmed -s -h 192.168.1.2 - | ffmpeg -i - nope.mp4");
 			Console.Error.WriteLine("   ifmed -s -h 192.168.1.2 -p 4001 - | ffmpeg -i - nope.mp4");
@@ -225,8 +225,8 @@ namespace ifmed
 			Console.Error.WriteLine("   Server mode, receive stream with specific time and duration");
 			Console.Error.WriteLine("   ifmed -s - | ffmpeg -i - -ss 120 -t 200 nope.mp4");
 			Console.Error.WriteLine();
-			Console.Error.WriteLine("Server need to run first before client.");
-			Console.Error.WriteLine("Pipe over WAN is not recommended unless you have 10mbps and VPN (encrypt).");
+			Console.Error.WriteLine("Server needs to be run prior to client.");
+			Console.Error.WriteLine("Pipe over WAN is not recommended unless you have speeds exceeding 10mbps with VPN (encryption).");
 			Console.Error.WriteLine("Sending RAW stream over network is not recommended unless you have 10Gbps.\n\n");
 
 			switch (code)
@@ -238,7 +238,7 @@ namespace ifmed
 					break;
 				case 1:
 					Console.ForegroundColor = ConsoleColor.Red;
-					Console.Error.WriteLine("Error! In valid IP Address!, Type ifmed --help for more info.\n");
+					Console.Error.WriteLine("Error! Invalid IP Address!, Type ifmed --help for more info.\n");
 					Console.ResetColor();
 					break;
 				case 2:
