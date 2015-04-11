@@ -190,7 +190,7 @@ namespace ifmed
 		static void Head()
 		{
 			Console.ForegroundColor = ConsoleColor.Yellow;
-			Console.Error.WriteLine("Internet Friendly Media Encoder Distributed - by Anime4000 (x265.github.io)");
+			Console.Error.WriteLine("Internet Friendly Media Encoder Distribution - by Anime4000 (x265.github.io)");
 			Console.Error.WriteLine("Version: {0} compiled on {1} ({2})\n", Globals.BuildVersion, Globals.BuildDate, Globals.CPU);
 			Console.ResetColor();
 		}
