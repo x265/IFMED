@@ -178,7 +178,7 @@ namespace ifmed
 				case 3:
 					Console.Error.Write("ifme [");
 					Console.ForegroundColor = ConsoleColor.Red;
-					Console.Error.Write("warn");
+					Console.Error.Write("erro");
 					Console.ResetColor();
 					Console.Error.Write("]: {0}\n", text);
 					break;
@@ -225,9 +225,11 @@ namespace ifmed
 			Console.Error.WriteLine("   Server mode, receive stream with specific time and duration");
 			Console.Error.WriteLine("   ifmed -s - | ffmpeg -i - -ss 120 -t 200 nope.mp4");
 			Console.Error.WriteLine();
-			Console.Error.WriteLine("Server needs to be run prior to client.");
-			Console.Error.WriteLine("Pipe over WAN is not recommended unless you have speeds exceeding 10mbps with VPN (encryption).");
-			Console.Error.WriteLine("Sending RAW stream over network is not recommended unless you have 10Gbps.\n\n");
+			Console.Error.WriteLine("Note:");
+			Console.Error.WriteLine("1. Server needs to be run prior to client.");
+			Console.Error.WriteLine("2. Pipe over WAN is not recommended unless");
+			Console.Error.WriteLine("   you have speeds exceeding 10mbps with VPN (encryption).");
+			Console.Error.WriteLine("3. Sending RAW stream over network is not recommended unless you have 10Gbps.\n");
 
 			switch (code)
 			{
