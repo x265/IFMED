@@ -2,11 +2,11 @@
 ## What is this?
 This command-line tool allow you encode video over network (via pipe).
 
-Mostly all encoder's having support `stdin` and `stdout`, most popular tool is FFmpeg
+Most encoder's support `stdin` and `stdout`, most popular tool is FFmpeg
 
 ## How to use?
 ### System Requirement
-Make sure your computer meet this specification
+Ensure your computer meets the following specification:
 
 1. .NET Framework 4.0 (Windows) or Mono Runtime (Linux)
 2. Windows Vista and above or Ubuntu 14.04 and above
@@ -55,7 +55,7 @@ Note:
 
 ### Detailed Explanation
 #### Server mode
-Server mode is a machine only doing encoding, before client start, server need to run first and awaiting connection.
+Server mode is when a machine only does encoding. Before starting a client, ensure the server is running and awaiting connection.
 
 FFmpeg:
 ```
@@ -83,7 +83,7 @@ user@host~# ifmed -s - | ffmpeg -i - -pix_fmt yuv420p -f yuv4mpegpipe -ss 120 -t
 ```
 
 #### Client mode
-Client mode is the host that sending video data to encoding server, first you need a server running first, see below.
+Client mode is the host that sending video data to encoding server. first you need a server running, see below.
 
 To send a video (localhost default):
 ```
